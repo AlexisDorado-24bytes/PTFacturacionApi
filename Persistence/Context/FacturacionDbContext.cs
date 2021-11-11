@@ -2,6 +2,7 @@
 using Domain.Common;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace Persistence.Context
             _dateTime = dateTime;
         }
 
-        public DbSet<CategoriaProducto> CategoriaProducto { get; set; }
+        public DbSet<CategoriaProducto> CategoriProducto { get; set; }
 
         //Se modifica en guardar los cambios para que también agrege la ultima fecha de modificacion y la de creación.
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
@@ -40,5 +41,11 @@ namespace Persistence.Context
             }
             return base.SaveChangesAsync(cancellationToken);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
+
     }
 }

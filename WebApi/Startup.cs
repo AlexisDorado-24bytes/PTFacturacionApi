@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Persistence;
+using Shared;
 
 namespace WebApi
 {
@@ -20,8 +22,16 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             //Matriculamos en WebApi la agrupacion de los servicios en Application.
             services.AddApplicationLayer();
+
+            //Matriculamos los servicios de Shared
+            services.AddSharedInfraestructure(Configuration);
+
+            //Matriculamos la persistencia
+            services.AddPersistenceInfraestructure(Configuration);
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
