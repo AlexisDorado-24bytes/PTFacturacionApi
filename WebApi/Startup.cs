@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Persistence;
 using Shared;
+using WebApi.Extensions;
 
 namespace WebApi
 {
@@ -53,6 +54,8 @@ namespace WebApi
 
             app.UseRouting();
 
+            //Matriculamos extensiones para implementar los middleware creados
+            app.UseErrorHandlerMiddleware();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
