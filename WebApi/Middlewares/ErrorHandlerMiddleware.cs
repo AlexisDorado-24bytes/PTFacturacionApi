@@ -16,7 +16,7 @@ namespace WebApi.Middlewares
         {
             _next = next;
         }
-        public async Task invoke(HttpContext context)
+        public async Task Invoke(HttpContext context)
         {
             try
             {
@@ -48,12 +48,18 @@ namespace WebApi.Middlewares
                     case KeyNotFoundException e:
                         //Error de no encontrado
                         response.StatusCode = (int)HttpStatusCode.NotFound;
-
                         break;
 
                     default:
                         //Error no manejado
+
                         response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+                        List<string> mensajeCreado = new List<string>();
+                        mensajeCreado.Add("Error no validado, revisa los parámetros enviados.");
+
+                        responseModel.Errors = mensajeCreado;
+
                         break;
                 }
 

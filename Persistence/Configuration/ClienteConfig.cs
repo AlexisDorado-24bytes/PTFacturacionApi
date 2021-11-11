@@ -10,11 +10,13 @@ namespace Persistence.Configuration
         {
             builder.ToTable("CategoriasProductos");
             builder.HasKey(p => p.CategoriaProductoId);
+            builder.HasIndex(p => p.Codigo).IsUnique();
             builder.Property(p => p.Nombre).HasMaxLength(100).IsRequired();
             builder.Property(p => p.Descripcion).HasMaxLength(300).IsRequired();
             builder.Property(p => p.Codigo).HasMaxLength(50).IsRequired();
 
 
         }
+
     }
 }

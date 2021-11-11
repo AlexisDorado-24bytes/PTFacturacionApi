@@ -19,7 +19,10 @@
     <Folder Include="Features\Categorias\Commands\EditCategoriaCommand\" />
     <Folder Include="Features\Categorias\Queries\GetAllClientes\" />
     <Folder Include="Features\Categorias\Queries\GetClienteId\" />
-    <Folder Include="Mappings\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

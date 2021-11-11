@@ -27,13 +27,17 @@ namespace WebApi
             //Matriculamos en WebApi la agrupacion de los servicios en Application.
             services.AddApplicationLayer();
 
-            //Matriculamos los servicios de Shared
+            //Matriculamos los servicios de Shared.
             services.AddSharedInfraestructure(Configuration);
 
-            //Matriculamos la persistencia
+            //Matriculamos la persistencia.
             services.AddPersistenceInfraestructure(Configuration);
 
             services.AddControllers();
+
+            //Matriculando la configuracion del servicio del versionamiento de los controladores.
+            services.AppApiVersioningExtension();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });

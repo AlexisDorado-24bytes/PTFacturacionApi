@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Aplication.Behavior;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -13,11 +14,15 @@ namespace Aplication
             //Matriculando el automapper, para que automaticamente  registre los mapeos en ésta biblioteca de cllases.
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            //Matriculando el FluentValidation y poder usar las validaiones
+            //Matriculando el FluentValidation y poder usar las validaiones.
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             //Matriculamos para usaar el patron mediator.
             services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            //Matriculamos el pepeline que valida el flujo del patron mediator, intercepta y valida los datos recibidos.
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
 
 
         }
