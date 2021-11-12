@@ -14,6 +14,7 @@ namespace Persistence.Configuration
             builder.Property(p => p.Descripcion).HasMaxLength(300).IsRequired();
             builder.Property(p => p.PrecioCompra).HasColumnType("decimal(18,2)").IsRequired();
             builder.Property(p => p.PrecioVentaCliente).HasColumnType("decimal(18,2)").IsRequired();
+            builder.Property(p => p.Stock).HasColumnType("int").IsRequired();
         }
 
     }

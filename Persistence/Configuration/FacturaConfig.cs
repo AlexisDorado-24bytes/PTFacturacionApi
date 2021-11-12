@@ -14,6 +14,7 @@ namespace Persistence.Configuration
             builder.HasIndex(p => p.Codigo).IsUnique();
 
             builder.Property(p => p.ValorTotalVenta).HasColumnType("decimal(18,2)").IsRequired();
+            builder.Property(p => p.TotalProductosVenta).HasColumnType("int").IsRequired();
             builder.Property(p => p.FechaFactura).IsRequired();
 
         }

@@ -9,6 +9,7 @@ namespace Domain.Entities
         public Guid Codigo { get; set; }
         public Cliente Cliente { get; set; }
         public Guid ClienteId { get; set; }
+        public int TotalProductosVenta { get; set; }
         public decimal ValorTotalVenta { get; set; }
 
     }

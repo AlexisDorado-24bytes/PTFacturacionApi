@@ -18,9 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Facturas\Commands\DeleteFacturaCommand\" />
-    <Folder Include="Features\Facturas\Queries\GetAllClientes\" />
-    <Folder Include="Features\Facturas\Queries\GetClienteId\" />
+    <Folder Include="Features\DetalleFacturaProductos\Commands\DeleteFacturaCommand\" />
+    <Folder Include="Features\DetalleFacturaProductos\Queries\GetAllClientes\" />
+    <Folder Include="Features\DetalleFacturaProductos\Queries\GetClienteId\" />
+    <Folder Include="Features\Productos\" />
   </ItemGroup>
 
 </Project>
