@@ -17,4 +17,10 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Facturas\Commands\DeleteFacturaCommand\" />
+    <Folder Include="Features\Facturas\Queries\GetAllClientes\" />
+    <Folder Include="Features\Facturas\Queries\GetClienteId\" />
+  </ItemGroup>
+
 </Project>
