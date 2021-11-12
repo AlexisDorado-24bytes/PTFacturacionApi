@@ -15,7 +15,6 @@ namespace Persistence.Configuration
 
             builder.Property(p => p.ValorTotalVenta).HasColumnType("decimal(18,2)").IsRequired();
             builder.Property(p => p.FechaFactura).IsRequired();
-            builder.Property(p => p.Cliente).IsRequired();
 
         }
     }
