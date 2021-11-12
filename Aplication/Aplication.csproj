@@ -14,14 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
-    <Folder Include="Features\Categorias\Commands\DeleteCategoriaCommand\" />
-    <Folder Include="Features\Categorias\Commands\EditCategoriaCommand\" />
-    <Folder Include="Features\Categorias\Queries\GetAllClientes\" />
-    <Folder Include="Features\Categorias\Queries\GetClienteId\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
