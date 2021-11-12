@@ -10,6 +10,7 @@ namespace Domain.Entities
         public decimal PrecioCompra { get; set; }
         public decimal PrecioVentaCliente { get; set; }
         public CategoriaProducto CategoriaProducto { get; set; }
+        public Guid CategoriaProductoId { get; set; }
 
     }
 }
