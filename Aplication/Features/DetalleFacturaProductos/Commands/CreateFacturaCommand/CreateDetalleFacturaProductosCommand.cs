@@ -16,7 +16,8 @@ namespace Aplication.Features.DetalleFacturaProductos.Commands.CreateFacturaComm
         public Guid Codigo { get; set; }
         public Guid ProductoId { get; set; }
         public int Cantidad { get; set; }
-
+        private decimal ValorUnitario { get; set; }
+        private decimal ValorTotal { get; set; }
 
         public class CreateDetalleFacturaProductosCommandHandler : IRequestHandler<CreateDetalleFacturaProductosCommand, Response<Guid>>
         {
