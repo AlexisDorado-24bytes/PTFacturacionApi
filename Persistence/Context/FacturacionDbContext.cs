@@ -19,6 +19,7 @@ namespace Persistence.Context
         }
 
         public DbSet<CategoriaProducto> CategoriProducto { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
 
         //Se modifica en guardar los cambios para que también agrege la ultima fecha de modificacion y la de creación.
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

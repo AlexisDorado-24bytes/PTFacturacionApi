@@ -4,18 +4,19 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Persistence.Configuration
 {
-    public class ClienteConfig : IEntityTypeConfiguration<CategoriaProducto>
+    public class ClienteConfig : IEntityTypeConfiguration<Cliente>
     {
-        public void Configure(EntityTypeBuilder<CategoriaProducto> builder)
+        public void Configure(EntityTypeBuilder<Cliente> builder)
         {
-            builder.ToTable("CategoriasProductos");
-            builder.HasKey(p => p.CategoriaProductoId);
-            builder.HasIndex(p => p.Codigo).IsUnique();
-            builder.Property(p => p.Nombre).HasMaxLength(100).IsRequired();
-            builder.Property(p => p.Descripcion).HasMaxLength(300).IsRequired();
-            builder.Property(p => p.Codigo).HasMaxLength(50).IsRequired();
-
-
+            builder.ToTable("Clientes");
+            builder.HasKey(p => p.ClienteId);
+            builder.HasIndex(p => p.CedulaCliente).IsUnique();
+            builder.Property(p => p.CedulaCliente).HasMaxLength(15).IsRequired();
+            builder.Property(p => p.Nombre).HasMaxLength(80).IsRequired();
+            builder.Property(p => p.Apellido).HasMaxLength(200).IsRequired();
+            builder.Property(p => p.FechaNacimiento).IsRequired();
+            builder.Property(p => p.Telefono).HasMaxLength(15);
+            builder.Property(p => p.Direccion).HasMaxLength(250);
         }
 
     }
