@@ -1,23 +1,25 @@
-﻿using Aplication.Features.Facturas.Commands.CreateFacturaCommand;
-using Aplication.Features.Facturas.Queries.GetAllFacturas;
+﻿using Aplication.Features.DetalleFacturaProductos.Commands.CreateFacturaCommand;
+using Aplication.Features.DetalleFacturaProductos.Commands.DeleteDetalleFacturaCommand;
+using Aplication.Features.Facturas.Queries.GetFacturasYTodaLaVenta;
+using Aplication.Features.Facturas.Queries.ShowInvoiceWithFullSale;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace WebApi.Controllers.V1
 {
     [ApiVersion("1.0")]
     [ApiController]
-    public class FacturaController : BaseApiController
+    public class VentaDetalleController : BaseApiController
     {
         // Get api/v1.0/<controller>
         [HttpGet()]
-        public async Task<IActionResult> GetAllPaginated([FromQuery] GetAllFacturasQueryPagingParameters filter)
+        public async Task<IActionResult> GetAllPaginated([FromQuery] ShowInvoiceWithFullSaleQueryParameters filter)
         {
-            return Ok(await Mediator.Send(new GetAllFacturasQueryPaging
+            return Ok(await Mediator.Send(new ShowInvoiceWithFullSale
             {
-                PageNumber = filter.PageNumber,
-                PageSize = filter.PageSize,
-                Codigo = filter.Codigo
+                CodigoUnicoDeFactura = filter.CodigoUnicoDeFactura
+
             }));
         }
 
@@ -29,7 +31,7 @@ namespace WebApi.Controllers.V1
         //}
         //// Post Api/v1.0/<Controller>
         [HttpPost]
-        public async Task<IActionResult> Post(CreateFacturaCommand command)
+        public async Task<IActionResult> Post(CreateDetalleFacturaProductosCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
@@ -46,11 +48,11 @@ namespace WebApi.Controllers.V1
         //}
 
         ////Delete api/v1.0/<controller>/5asda-asdas4-asdw4
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Delete(Guid id)
-        //{
-        //    return Ok(await Mediator.Send(new DeleteCategoriaCommand { FacturaId = id }));
-        //}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            return Ok(await Mediator.Send(new DeleteInvoiceDetailMovement { DetalleFacturaProductoId = id }));
+        }
 
 
     }

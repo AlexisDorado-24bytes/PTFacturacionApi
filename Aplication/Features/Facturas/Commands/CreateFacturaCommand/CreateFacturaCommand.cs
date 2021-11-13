@@ -14,7 +14,6 @@ namespace Aplication.Features.Facturas.Commands.CreateFacturaCommand
         public DateTime FechaFactura { get; set; }
         public Guid Codigo { get; set; }
         public Guid ClienteId { get; set; }
-        public decimal ValorTotalVenta { get; set; }
 
         public class CreateFacturaCommandHandler : IRequestHandler<CreateFacturaCommand, Response<Guid>>
         {

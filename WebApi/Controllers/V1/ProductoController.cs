@@ -1,4 +1,4 @@
-﻿using Aplication.Features.DetalleFacturaProductos.Commands.CreateFacturaCommand;
+﻿using Aplication.Features.Productos.Commands.CreateProductosCommand;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -6,7 +6,7 @@ namespace WebApi.Controllers.V1
 {
     [ApiVersion("1.0")]
     [ApiController]
-    public class DetalleFacturaProductosController : BaseApiController
+    public class ProductoController : BaseApiController
     {
         //// Get api/v1.0/<controller>
         //[HttpGet()]
@@ -29,7 +29,7 @@ namespace WebApi.Controllers.V1
         //}
         // Post Api/v1.0/<Controller>
         [HttpPost]
-        public async Task<IActionResult> Post(CreateDetalleFacturaProductosCommand command)
+        public async Task<IActionResult> Post(CreatedProductoCommand command)
         {
             return Ok(await Mediator.Send(command));
         }

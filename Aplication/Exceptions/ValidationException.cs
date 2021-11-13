@@ -7,7 +7,7 @@ namespace Aplication.Exceptions
     //Clase para la personalización de excepciones, con este canalizador se validaran las reglas del negocio al enviar peticiones
     public class ValidationException : Exception
     {
-        public ValidationException() : base("Se han prpducido uno o mas errores de validacion.")
+        public ValidationException() : base("Se han producido uno o mas errores de validacion.")
         {
 
             Errors = new List<string>();

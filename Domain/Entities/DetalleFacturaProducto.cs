@@ -5,7 +5,7 @@ namespace Domain.Entities
     public class DetalleFacturaProducto
     {
         public Guid DetalleFacturaProductoId { get; set; }
-        public string Codigo { get; set; }
+        public Guid Codigo { get; set; }
         public Producto Producto { get; set; }
         public Guid ProductoId { get; set; }
         public int Cantidad { get; set; }

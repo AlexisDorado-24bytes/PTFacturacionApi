@@ -2,12 +2,13 @@
 using Domain.Entities;
 using System;
 
-namespace Aplication.Features.Facturas.Queries.CustomSearches
+namespace Aplication.Especifications
 {
     public class CustomSearchesFacturas : Specification<Factura>
     {
         public CustomSearchesFacturas(Guid codigo)
         {
+
             if (!string.IsNullOrEmpty(codigo.ToString()))
             {
                 //Buscamos tipo like por el nombre ingresado
