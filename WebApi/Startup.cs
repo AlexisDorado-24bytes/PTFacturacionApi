@@ -23,6 +23,8 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Matriculamos cors
+            services.AddCors();
 
             //Matriculamos en WebApi la agrupacion de los servicios en Application.
             services.AddApplicationLayer();
@@ -47,6 +49,15 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            ///Configiramos para que acete desde el local host de angular
+            app.UseCors(conf =>
+            {
+                conf.AllowAnyOrigin();
+                conf.AllowAnyMethod();
+                conf.AllowAnyHeader();
+            });
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

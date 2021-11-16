@@ -16,6 +16,7 @@ namespace Aplication.Features.Categorias.Commands.CreateCategoriaCommand
         public string Descripcion { get; set; } = default!;
     }
 
+    //Clase manejador
     public class CreateCategoriaCommandHandler : IRequestHandler<CreateCategoriaCommand, Response<Guid>>
     {
         private readonly IRepositoryAsync<CategoriaProducto> _repositoryAsync;
