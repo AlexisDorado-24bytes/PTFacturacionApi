@@ -12,8 +12,8 @@ using Persistence.Context;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(FacturacionDbContext))]
-    [Migration("20211112081046_MigracionTablaFactura")]
-    partial class MigracionTablaFactura
+    [Migration("20211115100617_Primera migracion a azuree")]
+    partial class Primeramigracionaazuree
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -98,13 +98,42 @@ namespace Persistence.Migrations
                     b.ToTable("Clientes", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.DetalleFacturaProducto", b =>
+                {
+                    b.Property<Guid>("DetalleFacturaProductoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("Codigo")
+                        .HasMaxLength(100)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ProductoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("ValorTotal")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("ValorUnitario")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("DetalleFacturaProductoId");
+
+                    b.HasIndex("ProductoId");
+
+                    b.ToTable("DetalleFacturaProductos", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Entities.Factura", b =>
                 {
                     b.Property<Guid>("FacturaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ClienteId")
+                    b.Property<Guid>("ClienteId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("Codigo")
@@ -112,6 +141,9 @@ namespace Persistence.Migrations
 
                     b.Property<DateTime>("FechaFactura")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("TotalProductosVenta")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("ValorTotalVenta")
                         .HasColumnType("decimal(18,2)");
@@ -132,7 +164,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("CategoriaProductoId")
+                    b.Property<Guid>("CategoriaProductoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Descripcion")
@@ -151,6 +183,9 @@ namespace Persistence.Migrations
                     b.Property<decimal>("PrecioVentaCliente")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductoId");
 
                     b.HasIndex("CategoriaProductoId");
@@ -158,11 +193,24 @@ namespace Persistence.Migrations
                     b.ToTable("Productos", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.DetalleFacturaProducto", b =>
+                {
+                    b.HasOne("Domain.Entities.Producto", "Producto")
+                        .WithMany()
+                        .HasForeignKey("ProductoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Producto");
+                });
+
             modelBuilder.Entity("Domain.Entities.Factura", b =>
                 {
                     b.HasOne("Domain.Entities.Cliente", "Cliente")
                         .WithMany()
-                        .HasForeignKey("ClienteId");
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Cliente");
                 });
@@ -171,7 +219,9 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.Entities.CategoriaProducto", "CategoriaProducto")
                         .WithMany()
-                        .HasForeignKey("CategoriaProductoId");
+                        .HasForeignKey("CategoriaProductoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("CategoriaProducto");
                 });

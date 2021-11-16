@@ -1,5 +1,4 @@
-﻿using Aplication.Features.Productos.Commands.CreateProductosCommand;
-using Aplication.Features.Productos.Queries.GetAllProductosCommands;
+﻿using Aplication.Features.Clientes.Queries.GetAllClientesQueries;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -7,15 +6,15 @@ namespace WebApi.Controllers.V1
 {
     [ApiVersion("1.0")]
     [ApiController]
-    public class ProductoController : BaseApiController
+    public class ClienteController : BaseApiController
     {
         // Get api/v1.0/<controller>
         [HttpGet()]
-        public async Task<IActionResult> GetAllPaginated([FromQuery] GetAllProductosCommandsParameters filter)
+        public async Task<IActionResult> GetAllPaginated([FromQuery] GetAllClientesParameters filter)
         {
-            return Ok(await Mediator.Send(new GetAllProductosCommands
+            return Ok(await Mediator.Send(new GetAllClientes
             {
-                Nombre = filter.Nombre,
+                CedulaCuidadania = filter.CeludaDeCiudadania,
                 PageNumber = filter.PageNumber,
                 PageSize = filter.PageSize
             }));
@@ -28,11 +27,11 @@ namespace WebApi.Controllers.V1
         //    return Ok(await Mediator.Send(new GetAllProductosCommands { FacturaId = id }));
         //}
         // Post Api/v1.0/<Controller>
-        [HttpPost]
-        public async Task<IActionResult> Post(CreatedProductoCommand command)
-        {
-            return Ok(await Mediator.Send(command));
-        }
+        //[HttpPost]
+        //public async Task<IActionResult> Post(CreatedProductoCommand command)
+        //{
+        //    return Ok(await Mediator.Send(command));
+        //}
 
         //Put api/v1.0/<controller>/5asda-asdas4-asdw4
         //[HttpPut("{id}")]
@@ -47,9 +46,9 @@ namespace WebApi.Controllers.V1
 
         ////Delete api/v1.0/<controller>/5asda-asdas4-asdw4
         //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Delete(Guid CodigoUnicoDeFactura)
+        //public async Task<IActionResult> Delete(Guid id)
         //{
-        //    return Ok(await Mediator.Send(new DeleteInvoiceAndAlMovementsByCode { CodigoUnicoDeFactura = CodigoUnicoDeFactura }));
+        //    return Ok(await Mediator.Send(new DeleteCategoriaCommand { FacturaId = id }));
         //}
 
 

@@ -1,6 +1,8 @@
 ﻿using Aplication.Features.Facturas.Commands.CreateFacturaCommand;
+using Aplication.Features.Facturas.Commands.DeleteInvoiceAndAllmovements;
 using Aplication.Features.Facturas.Queries.GetAllFacturas;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace WebApi.Controllers.V1
@@ -46,11 +48,11 @@ namespace WebApi.Controllers.V1
         //}
 
         ////Delete api/v1.0/<controller>/5asda-asdas4-asdw4
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Delete(Guid id)
-        //{
-        //    return Ok(await Mediator.Send(new DeleteCategoriaCommand { FacturaId = id }));
-        //}
+        [HttpDelete("{CodigoUnicoDeFactura}")]
+        public async Task<IActionResult> Delete(Guid CodigoUnicoDeFactura)
+        {
+            return Ok(await Mediator.Send(new DeleteInvoiceAndAlMovementsByCode { CodigoUnicoDeFactura = CodigoUnicoDeFactura }));
+        }
 
 
     }

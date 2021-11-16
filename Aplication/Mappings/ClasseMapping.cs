@@ -16,6 +16,7 @@ namespace Aplication.Mappings
             CreateMap<CategoriaProductoDto, CategoriaProducto>().ReverseMap();
             CreateMap<FacturaDto, Factura>().ReverseMap();
             CreateMap<ProductoDto, Producto>().ReverseMap();
+            CreateMap<ClienteDto, Cliente>().ReverseMap();
 
             #endregion
 

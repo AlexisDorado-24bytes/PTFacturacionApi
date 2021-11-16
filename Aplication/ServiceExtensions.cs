@@ -15,6 +15,7 @@ namespace Aplication
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             //Matriculando el FluentValidation y poder usar las validaiones.
+            //eS DONDE DEFINIMOS LAS REGLAS DE NEGOCIO
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             //Matriculamos para usaar el patron mediator.
@@ -22,8 +23,6 @@ namespace Aplication
 
             //Matriculamos el pepeline que valida el flujo del patron mediator, intercepta y valida los datos recibidos.
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-
-
 
         }
     }
